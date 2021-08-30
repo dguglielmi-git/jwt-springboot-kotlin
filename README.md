@@ -77,7 +77,7 @@ There is no license.
 
 ## Thanks 🎁
 
-I hope you can use this solution and if you want to contribute with it, you are very welcome to join our Snappy team.
+I hope you can use this template for your future projects.
 
 
 
