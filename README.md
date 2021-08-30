@@ -61,7 +61,7 @@ To use this example you must have installed a MySQL Engine, or at least, connect
 
 ## Version 📌
 
-We used [SemVer](http://semver.org/) for versioning. Check out the whole version list available in [tagsRepo](https://github.com/dguglielmi-git/snappycloud-backend/tags).
+We used [SemVer](http://semver.org/) for versioning. Check out the whole version list available in [tagsRepo](https://github.com/dguglielmi-git/jwt-springboot-kotlin/tags).
 
 
 ## Author ✒️
