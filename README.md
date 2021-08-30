@@ -35,7 +35,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 ### Pre-requisites 📋
 
-To use this example you must have installed a MySQL Engine, or at least, connection data to a MySQL Database. Otherwise, you must adapt this project to connect it to another engine you may like.
+To use this example you must have installed a MySQL Engine, or at least, connection data to a MySQL Database. Otherwise, you must adapt this project to connect it to another engine you like.
 
 
 
