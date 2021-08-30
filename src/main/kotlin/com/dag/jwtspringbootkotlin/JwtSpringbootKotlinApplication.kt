@@ -17,27 +17,3 @@ fun main(args: Array<String>) {
 
 @Bean
 fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
-
-
-/*
-@Bean
-fun run(userService: GenericService) = CommandLineRunner {
-		userService.saveRole(Role(0, "ROLE_USER"))
-		userService.saveRole(Role(0, "ROLE_MANAGER"))
-		userService.saveRole(Role(0, "ROLE_ADMIN"))
-		userService.saveRole(Role(0, "ROLE_ROOT"))
-
-		userService.saveUser(User(0, "John Travolta", "john", "1234", mutableListOf()))
-		userService.saveUser(User(0, "Will Smith", "will", "1234", mutableListOf()))
-		userService.saveUser(User(0, "Jim Carrey", "jim", "1234", mutableListOf()))
-		userService.saveUser(User(0, "Arnold Schwarzenegger", "arnold", "1234", mutableListOf()))
-
-		userService.addRoleToUser("john", "ROLE_USER")
-		userService.addRoleToUser("john", "ROLE_MANAGER")
-		userService.addRoleToUser("will", "ROLE_MANAGER")
-		userService.addRoleToUser("jim", "ROLE_ADMIN")
-		userService.addRoleToUser("arnold", "ROLE_ROOT")
-		userService.addRoleToUser("arnold", "ROLE_ADMIN")
-		userService.addRoleToUser("arnold", "ROLE_USER")
-}
-*/

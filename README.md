@@ -82,4 +82,4 @@ I hope you can use this template for your future projects.
 
 
 ---
-⌨️ with ❤️ by [dguglielmi-git](https://github.com/dguglielmi-git) 😊
+⌨️ with ❤️ by [dguglielmi-git](https://github.com/dguglielmi-git) 😊 - Happy Coding!
