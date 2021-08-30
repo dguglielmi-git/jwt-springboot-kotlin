@@ -15,13 +15,15 @@ You can start modifying the DataSourceConfig located into configuration folder w
 * [Connecting utilizing application.properties](#)
 
 Go to JwtSpringbootKotlinApplication.kt and modify it removing the line related to DataSourceAutoConfiguration:class
-Example as you will find it:
+
+* Example as you will find it:
 @SpringBootApplication(exclude = [SecurityAutoConfiguration::class, DataSourceAutoConfiguration::class])
 
-After removing it:
+
+* After removing it:
 @SpringBootApplication(exclude = [SecurityAutoConfiguration::class])
 
-Then you can Comment or delete the DataSourceConfig and modify application.properties adding the following lines:
+Then you can comment or delete the DataSourceConfig, and modify application.properties file by adding the following lines:
 ```#spring.datasource.url=jdbc:mysql://localhost:3306/labs
 # Example of configuration utilizing MySQL
 spring.datasource.username=labs
