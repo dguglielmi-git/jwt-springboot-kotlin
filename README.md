@@ -5,8 +5,8 @@ This is a basic template for JSON Web Token Project. It manages User and Roles.
 
 ## Getting Started 🚀
 
-In order to start using this project, after downloading or have it cloned from the repository, you should configure the database access.
-In this project, we are using a MySQL DataBase, but in case you need to use another one, you should provide all these configuration into the DataSource.
+In order to start using this project, after downloading it or have it cloned from the repository, you should configure the database access.
+In this sample project, we are using a MySQL DataBase, but in case you need to use some other engine, you should provide all the configuration details into the DataSource.
 
 * [Connecting utilizing DataSourceConfig Bean](#)
 
@@ -14,7 +14,7 @@ You can start modifying the DataSourceConfig located into configuration folder w
 
 * [Connecting utilizing application.properties](#)
 
-Go to JwtSpringbootKotlinApplication.kt and modify it removing the line related to DataSourceAutoConfiguration:class
+Go to JwtSpringbootKotlinApplication.kt and remove the line related to DataSourceAutoConfiguration:class within exclude clause declared in @SpringBootApplication annotation.
 
 * Example as you will find it:
 @SpringBootApplication(exclude = [SecurityAutoConfiguration::class, DataSourceAutoConfiguration::class])
@@ -40,7 +40,7 @@ To use this example you must have installed a MySQL Engine, or at least, connect
 
 
 ### How to Install 🔧
- * This project is already configure to start using as soon as you download it.
+ * This project is already configured to start using it as soon as you download it.
 
 ## Deploy 📦
  * Depends on the final user of this project.
