@@ -8,6 +8,7 @@ This is a basic template for JSON Web Token Project. It manages User and Roles.
 In order to start using this project, after downloading it or have it cloned from the repository, you should configure the database access.
 In this sample project, we are using a MySQL DataBase, but in case you need to use some other engine, you should provide all the configuration details into the DataSource.
 
+### Connection
 * [Connecting utilizing DataSourceConfig Bean](#)
 
 You can start modifying the DataSourceConfig located into configuration folder within the Project, and change all the information regarding DB access. 
@@ -33,13 +34,63 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 
-### Pre-requisites 📋
+### Token Secret Key
+Another important point to take into account, is the secret key for the token code.
+Below you will find a snippet of code where the project is generating the token code utilizing a secret key, that in this case and of course, because this is a template, we are using "secret", that for obvious reasons, I suggest and strongly recommend to you, changing it for something stronger.
+
+```
+# path of this code: com.dag.jwtspringbootkotlin.auth
+
+class TokenUtils {
+    private lateinit var request: HttpServletRequest
+    private val algorithm: Algorithm = Algorithm.HMAC256("secret".toByteArray())
+    
+    
+    ... rest of the TokenUtils class code ...
+}
+```
+
+It is up to you to choose a great secret key for the token code generator, but anyway, I will give you some options that you can use to create something good:
+* [KeyGen.io](https://keygen.io/)
+* [RandomKeyGen](https://randomkeygen.com/)
+
+Utilizing a key generator is the first step, then you could decide how to apply it. 
+In the example you will see that it is being used as hard-code string, that is fair enough for educational purposes, but I would not recommend it for production projects.
+
+### Suggestions for Secret key
+You could use an environment variable and read it from the system by calling System.getenv("NAME_OF_VARIABLE")
+
+Defining an environment variable you will be able to get it straight forward from the system where the project is running.
+Therefore, you won't have to worry about sharing this key in your repositories or any other version control system that you may use. 
+Just be careful and remember setting your environment variable in order to avoid the error messages when you initiate this project, and it is missing this important key.
+
+```
+# Example of SECRET KEY stored as environment variable
+SECRET_JWTKOTLIN=G73rRnBODY5T9QMAX80hVvwN16HtKEIb
+```
+
+* Code snippet of How to get the key from environment variable:
+```
+# path of this code: com.dag.jwtspringbootkotlin.auth
+
+class TokenUtils {
+private lateinit var request: HttpServletRequest
+private val algorithm: Algorithm.HMAC256(System.getenv("SECRET_JWTKOTLIN").toByteArray())
+
+
+    ... rest of the TokenUtils class code ...
+}
+```
+
+
+
+
+## Pre-requisites 📋
 
 To use this example you must have installed a MySQL Engine, or at least, connection data to a MySQL Database. Otherwise, you must adapt this project to connect it to another engine you like.
 
 
-
-### How to Install 🔧
+## How to Install 🔧
  * This project is already configured to start using it as soon as you download it.
 
 ## Deploy 📦
