@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse
 class TokenUtils {
     private lateinit var request: HttpServletRequest
     private val algorithm: Algorithm = Algorithm.HMAC256("secret".toByteArray())
+    private val timeoutToken = 10 * 60 * 1000
+    private val refreshTimeOutToken = 30 * 60 * 1000
 
     fun sendTokens(
             request: HttpServletRequest,
@@ -85,7 +87,7 @@ class TokenUtils {
 
     private fun getTokenFromUserDetails(user: User) = JWT.create()
             .withSubject(user.username)
-            .withExpiresAt(Date(System.currentTimeMillis() + 10 * 6 * 1000))
+            .withExpiresAt(Date(System.currentTimeMillis() +timeoutToken))
             .withIssuer(request.requestURL.toString())
             .withClaim("roles",
                     user.authorities.stream()
@@ -95,14 +97,14 @@ class TokenUtils {
 
     private fun getTokenFromUserModel(user: com.dag.jwtspringbootkotlin.model.User?) = JWT.create()
             .withSubject(user?.username)
-            .withExpiresAt(Date(System.currentTimeMillis() + 10 * 60 * 1000))
+            .withExpiresAt(Date(System.currentTimeMillis() + timeoutToken))
             .withIssuer(request.requestURL.toString())
             .withClaim("roles", user?.roles)
             .sign(algorithm)
 
     private fun getRefreshToken(user: User) = JWT.create()
             .withSubject(user.username)
-            .withExpiresAt(Date(System.currentTimeMillis() + 30 * 60 * 1000))
+            .withExpiresAt(Date(System.currentTimeMillis() + refreshTimeOutToken))
             .withIssuer(request.requestURL.toString())
             .sign(algorithm)
 }
