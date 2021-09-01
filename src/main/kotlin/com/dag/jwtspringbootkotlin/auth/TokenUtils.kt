@@ -87,7 +87,7 @@ class TokenUtils {
 
     private fun getTokenFromUserDetails(user: User) = JWT.create()
             .withSubject(user.username)
-            .withExpiresAt(Date(System.currentTimeMillis() +timeoutToken))
+            .withExpiresAt(Date(System.currentTimeMillis() + timeoutToken))
             .withIssuer(request.requestURL.toString())
             .withClaim("roles",
                     user.authorities.stream()
