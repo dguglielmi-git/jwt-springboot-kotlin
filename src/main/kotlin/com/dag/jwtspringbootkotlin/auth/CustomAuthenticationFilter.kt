@@ -14,7 +14,6 @@ class CustomAuthenticationFilter(
         authenticationManager: AuthenticationManager,
 ) : UsernamePasswordAuthenticationFilter(authenticationManager) {
 
-
     override fun attemptAuthentication(request: HttpServletRequest, response: HttpServletResponse?): Authentication {
         val username: String = request.getParameter("username")
         val password: String = request.getParameter("password")
@@ -32,5 +31,4 @@ class CustomAuthenticationFilter(
         val tokenUtils = TokenUtils()
         tokenUtils.sendTokens(request, response, authentication)
     }
-
 }
