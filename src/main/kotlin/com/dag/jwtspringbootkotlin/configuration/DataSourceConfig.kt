@@ -14,7 +14,7 @@ class DataSourceConfig {
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver")
         dataSourceBuilder.url("jdbc:mysql://localhost:3306/labs")
         dataSourceBuilder.username("labs")
-        dataSourceBuilder.password("labs")
+        dataSourceBuilder.password("newTh8izhanlv.\$")
 
         return dataSourceBuilder.build()
     }

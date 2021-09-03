@@ -11,11 +11,13 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
+import org.springframework.stereotype.Component
 import java.util.*
 import java.util.stream.Collectors
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+@Component
 class TokenUtils {
     private lateinit var request: HttpServletRequest
     private val algorithm: Algorithm = Algorithm.HMAC256("secret".toByteArray())

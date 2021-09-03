@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse
 @RequestMapping("/api")
 class UserController(
         private val userService: UserService,
+        private val tokenUtils: TokenUtils,
 ) {
-    private val tokenUtils = TokenUtils()
 
     @GetMapping("/users")
     fun getUsers(): ResponseEntity<List<User>> = ResponseEntity.ok().body(userService.findAll())
@@ -54,5 +54,4 @@ class UserController(
             throw RuntimeException("Refresh token is missing")
         }
     }
-
 }

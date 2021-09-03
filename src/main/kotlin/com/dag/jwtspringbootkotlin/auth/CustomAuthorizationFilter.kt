@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Slf4j
-class CustomAuthorizationFilter : OncePerRequestFilter() {
+class CustomAuthorizationFilter(private val tokenUtils : TokenUtils) : OncePerRequestFilter() {
 
-    private val tokenUtils = TokenUtils()
     override fun doFilterInternal(
             request: HttpServletRequest,
             response: HttpServletResponse,

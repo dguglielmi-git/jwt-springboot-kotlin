@@ -2,6 +2,7 @@ package com.dag.jwtspringbootkotlin.security
 
 import com.dag.jwtspringbootkotlin.auth.CustomAuthenticationFilter
 import com.dag.jwtspringbootkotlin.auth.CustomAuthorizationFilter
+import com.dag.jwtspringbootkotlin.auth.TokenUtils
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod.GET
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 class SecurityConfig(
         val userDetailsService: UserDetailsService,
+        val tokenUtils: TokenUtils,
 ) : WebSecurityConfigurerAdapter() {
 
     private val bCryptPasswordEncoder: BCryptPasswordEncoder = BCryptPasswordEncoder()
@@ -32,7 +34,7 @@ class SecurityConfig(
     @Throws
     override fun configure(http: HttpSecurity) {
         val customAuthenticationFilter =
-                CustomAuthenticationFilter(authenticationManagerBean())
+                CustomAuthenticationFilter(authenticationManagerBean(),tokenUtils)
         customAuthenticationFilter.setFilterProcessesUrl("/api/login")
         http.csrf().disable()
         http.sessionManagement().sessionCreationPolicy(STATELESS)
@@ -48,7 +50,7 @@ class SecurityConfig(
                 .hasAnyAuthority("ROLE_ADMIN")
         http.authorizeRequests().anyRequest().authenticated()
         http.addFilter(customAuthenticationFilter)
-        http.addFilterBefore(CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter::class.java)
+        http.addFilterBefore(CustomAuthorizationFilter(tokenUtils), UsernamePasswordAuthenticationFilter::class.java)
     }
 
     @Bean

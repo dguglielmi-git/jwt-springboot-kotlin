@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse
 @Slf4j
 class CustomAuthenticationFilter(
         authenticationManager: AuthenticationManager,
+        private val tokenUtils: TokenUtils
 ) : UsernamePasswordAuthenticationFilter(authenticationManager) {
 
     override fun attemptAuthentication(request: HttpServletRequest, response: HttpServletResponse?): Authentication {
@@ -28,7 +29,6 @@ class CustomAuthenticationFilter(
             chain: FilterChain,
             authentication: Authentication,
     ) {
-        val tokenUtils = TokenUtils()
         tokenUtils.sendTokens(request, response, authentication)
     }
 }
